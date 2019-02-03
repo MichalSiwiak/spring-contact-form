@@ -20,7 +20,7 @@ public class MailController {
         return "error-page";
     }
 
-    @GetMapping("/demo")
+   /* @GetMapping("/demo")
     public String showContactForm(Model model) {
         model.addAttribute("mail", new Mail());
         return "contact-form";
@@ -39,5 +39,5 @@ public class MailController {
             model.addAttribute("error", "Some error occured.");
         }
         return "contact-form";
-    }
+    }*/
 }
