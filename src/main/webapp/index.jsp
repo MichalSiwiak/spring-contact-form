@@ -18,8 +18,8 @@
           type="text/css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/now-ui-kit.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://coffeecoding.net/resources/css/now-ui-kit.css" type="text/css">
+    <link rel="stylesheet" href="https://coffeecoding.net/resources/css/style.css" type="text/css">
     <link rel="icon" href="resources/img/favicon.png">
     <!-- PAGE scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -86,7 +86,8 @@
                         class="">DESCRIPTION
                 </text>
                 </a>
-                <a href="/resume" class="navbar-brand d-flex align-items-center"><i
+                <a href="https://coffeecoding.net/resources/img/cv_msiwiak.pdf" target="_blank"
+                   class="navbar-brand d-flex align-items-center"><i
                         class="fa fa-address-card fa-2x lead fa-fw d-inline-block" aria-hidden="true"></i>&nbsp;&nbsp;<text
                         class="">RESUME
                 </text>

@@ -15,6 +15,11 @@ public class MailController {
     @Autowired
     public JavaMailSender emailSender;
 
+    @GetMapping("/error")
+    public String showErrorPage() {
+        return "error-page";
+    }
+
     @GetMapping("/demo")
     public String showContactForm(Model model) {
         model.addAttribute("mail", new Mail());
