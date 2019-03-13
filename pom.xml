@@ -82,7 +82,7 @@
     </dependencies>
     <!-- Add support for Maven WAR Plugin -->
     <build>
-        <finalName>contact</finalName>
+        <finalName>contact-form</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>

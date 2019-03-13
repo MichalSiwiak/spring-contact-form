@@ -18,8 +18,8 @@
           type="text/css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/now-ui-kit.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://www.coffeecoding.net/resources/css/now-ui-kit.css" type="text/css">
+    <link rel="stylesheet" href="https://www.coffeecoding.net/resources/css/style.css" type="text/css">
     <link rel="icon" href="resources/img/favicon.png">
     <!-- PAGE scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -102,7 +102,7 @@
         </div>
 
 
-        <div class="text-center py-4 bg-secondary"
+       <%-- <div class="text-center py-4 bg-secondary"
              style="	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
             <div class="container">
                 <div class="row">
@@ -112,14 +112,162 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
 
 
         <div class="py-5">
             <div class="container">
-                <h2>Project Description</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-left">Contact FORM</h1>
+                        <hr>
+                        <h5>Spring MVC web application - implementation of contact form using javax.mail.<br></h5>
+                        <h5><b>Back End: </b>Java, Spring MVC.</h5>
+                        <h5><b>Front End: </b>HTML, CSS, JSP.</h5>
+                        <h5>To run application: git clone
+                            https://github.com/MichalSiwiak/spring-contact-form.git,
+                            upload and run application using tomcat application server or similar.</h5>
+                        </h5>
+                    </div>
+                </div>
+                <h5 class="mb-3">Config class:</h5>
+                <pre><code class="java">
+package net.coffeecoding.config;
+
+import java.util.Properties;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan("net.coffeecoding")
+public class AppConfig implements WebMvcConfigurer {
+
+    @Bean
+    public JavaMailSender getJavaMailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+
+        mailSender.setUsername("***@gmail.com");
+        mailSender.setPassword("***");
+
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "false");
+
+        return mailSender;
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
+    }
+}
+</code></pre>
+                <h5 class="mb-3">Mail Controller class:</h5>
+                <pre><code class="java">
+package net.coffeecoding.controller;
+
+import net.coffeecoding.model.Mail;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 
+@Controller
+public class MailController {
+
+    @Autowired
+    public JavaMailSender emailSender;
+
+    @GetMapping("/demo")
+    public String showContactForm(Model model) {
+        model.addAttribute("mail", new Mail());
+        return "contact-form";
+    }
+
+    @PostMapping("/demo")
+    public String sendMail(@ModelAttribute("mail") Mail mail, Model model) {
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(mail.getRecipient());
+            message.setSubject(mail.getSubject());
+            message.setText(mail.getContent());
+            emailSender.send(message);
+            model.addAttribute("success", "Your message has been sent.");
+        } catch (Exception e) {
+            model.addAttribute("error", "Some error occured.");
+        }
+        return "contact-form";
+    }
+}
+                </code></pre>
+                <h5 class="mb-3">Model class:</h5>
+                <pre><code class="java">
+package net.coffeecoding.model;
+
+public class Mail {
+
+    private String recipient;
+    private String content;
+    private String subject;
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    @Override
+    public String toString() {
+        return "Mail{" +
+                "recipient='" + recipient + '\'' +
+                ", content='" + content + '\'' +
+                ", subject='" + subject + '\'' +
+                '}';
+    }
+}
+                </code></pre>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+                <script>
+                    hljs.initHighlightingOnLoad();
+                </script>
             </div>
         </div>
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class MailController {
 
-    @Autowired
+   /* @Autowired
     public JavaMailSender emailSender;
 
     @GetMapping("/demo")
@@ -34,5 +34,11 @@ public class MailController {
             model.addAttribute("error", "Some error occured.");
         }
         return "contact-form";
+    }*/
+
+    @GetMapping("/error")
+    public String showErrorPage() {
+        return "error-page";
     }
+
 }
