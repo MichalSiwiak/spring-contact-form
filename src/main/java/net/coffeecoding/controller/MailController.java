@@ -40,13 +40,9 @@ public class MailController {
         }
         return "contact-form";
     }*/
-<<<<<<< HEAD
 
     @GetMapping("/error")
     public String showErrorPage() {
         return "error-page";
     }
-
-=======
->>>>>>> 15594bb40a6e2eab505945a2c3c499c7d17fad5b
 }

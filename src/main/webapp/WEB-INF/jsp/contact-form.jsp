@@ -18,13 +18,8 @@
           type="text/css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="https://www.coffeecoding.net/resources/css/now-ui-kit.css" type="text/css">
-    <link rel="stylesheet" href="https://www.coffeecoding.net/resources/css/style.css" type="text/css">
-=======
     <link rel="stylesheet" href="https://coffeecoding.net/resources/css/now-ui-kit.css" type="text/css">
     <link rel="stylesheet" href="https://coffeecoding.net/resources/css/style.css" type="text/css">
->>>>>>> 15594bb40a6e2eab505945a2c3c499c7d17fad5b
     <link rel="icon" href="resources/img/favicon.png">
     <!-- PAGE scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
